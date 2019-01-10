@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="description" content="Javascript stressful game" />
+  <title>Javascript stressful game</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
+  <script src="./js/game.js"></script>
+  <script src="./js/DOM.js"></script>
+  <script src="./js/circle.js"></script>
+  <script src="./js/square.js"></script>
+  <script src="./js/triangle.js"></script>
+
+</head>
+<body style="background-color:#dcdcdc;">
+  <div id="header" class="header">
+    <a href="#d" class="logo"><img src="./img/logo_unifr.png" width="100px" height="67px" /></a>
+    <h1 style="text-align:center;"> Seminar Affective Computing for Empathic Interaction</h1>
+  </div>
+  <div id="mainMenu" style="padding-top: 80px;">
+    <div id="test" style="display:flex; justify-content:center;">
+    </div>
+    <!-- <div>
+      <img src="./img/game.gif" style="border-width:3px; border-style:solid; margin-left: auto; margin-right: auto; display: block;" />
+    </div> -->
+
+    <div style="text-align:center; padding-top:25px;">
+      <span id="paraTitle">Rules</span>
+      <p>
+        The goal of this game is to click on circles in which the word "blue" appears under a time constraint.
+      </p>
+    </div>
+    <div style="display:flex; justify-content:center;">
+       <button class='flat-button' onclick="start()">Play </button>
+    </div>
+    <footer class="footer-distributed">
+
+			<div class="footer-right">
+
+
+				<a href="https://www3.unifr.ch/home/fr/"><i class="fas fa-university"></i></a>
+				<a href="mailto:johan.jobin@unifr.ch?subject=Circle_game"><i class="fas fa-at"></i></a>
+				<a href="https://github.com/JobinJohan/"><i class="fab fa-github-alt"></i></a>
+
+			</div>
+
+
+      <!-- Source of the footer: https://tutorialzine.com/2015/01/freebie-5-responsive-footer-templates -->
+			<div class="footer-left">
+
+				<p class="footer-links">
+					<a href="#">Home</a>
+
+				</p>
+				<p>Johan Jobin, University of Fribourg, 2018</p>
+			</div>
+
+		</footer>
+  </div>
+  <div id="timer" hidden  >
+    <center>
+      <span  id="remainingTime"></span> </br>
+      <progress style="margin-left:auto; margin-right-auto;" value="0" max="3" id="progressBar"></progress>
+    </center>
+  </div>
+  <div id="results" hidden>
+
+  </div>
+</body>
+
+</html>
