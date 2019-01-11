@@ -8,6 +8,8 @@ class Square{
     this.fillColor = fillColor;
     this.label = label;
     this.type="square";
+    var textColor = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+    this.textRandomColor= textColor;
   }
 
   getX(){
@@ -39,7 +41,7 @@ class Square{
     fill(this.fillColor);
     noStroke();
     rect(this.x,this.y,this.width, this.height);
-    fill("#000000");
+    fill(this.textRandomColor);
     text(this.label, this.x + this.width/2-25, this.y+ this.height/2);
     return this; // allows method chaining
   }

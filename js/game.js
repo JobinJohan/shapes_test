@@ -22,16 +22,18 @@ function draw() {
   if(started && currentNbQuestion<totalQuestions){
     background(220);
     fill(50);
-    textSize(20);
-    text(currentQuestion, windowWidth/2-150, windowHeight/3.5);
+    textSize(30);
+    text(currentQuestion, windowWidth/2-250, windowHeight/3.5);
     textSize(20);
     text("N° of the question: " + currentNbQuestion, 100, 20);
     text("Right answer: " + rightAnswer, windowWidth-275, 20);
     text("Wrong answer: " + wrongAnswer, windowWidth-275, 40)
-    textSize(15);
+    textSize(23);
+    textStyle(BOLD);
     currentOptions.forEach(function(element){
       element.shapeDraw();
     });
+    textStyle(NORMAL);
   }
   else if(ended || currentNbQuestion>=totalQuestions){
     if(firstloopEnd){
@@ -156,16 +158,16 @@ function generateQuestion(){
         switch(shapes[randomShapeIndex]){
           case "square":
               //console.log("square");
-              var square = new Square(positions[randomPositionsIndex].x, positions[randomPositionsIndex].y, 100, -100, true, colorsHex[randomColorIndex], colors[randomColorIndex]);
+              var square = new Square(positions[randomPositionsIndex].x, positions[randomPositionsIndex].y, 200, -200, true, colorsHex[randomColorHexIndex], colors[randomColorIndex]);
               currentOptions.push(square);
             break;
           case "triangle":
-              var triangle = new Triangle(positions[randomPositionsIndex].x, positions[randomPositionsIndex].y, positions[randomPositionsIndex].x +100, positions[randomPositionsIndex].y, positions[randomPositionsIndex].x +50, positions[randomPositionsIndex].y-100, true, colorsHex[randomColorIndex], colors[randomColorIndex]);
+              var triangle = new Triangle(positions[randomPositionsIndex].x, positions[randomPositionsIndex].y, positions[randomPositionsIndex].x +200, positions[randomPositionsIndex].y, positions[randomPositionsIndex].x +100, positions[randomPositionsIndex].y-200, true, colorsHex[randomColorHexIndex], colors[randomColorIndex]);
               //console.log("triangle");
               currentOptions.push(triangle);
             break;
           case "circle":
-              var circle = new Circle(positions[randomPositionsIndex].x+50, positions[randomPositionsIndex].y-50, 50, true, colorsHex[randomColorIndex], colors[randomColorIndex]);
+              var circle = new Circle(positions[randomPositionsIndex].x+100, positions[randomPositionsIndex].y-100, 100, true, colorsHex[randomColorHexIndex], colors[randomColorIndex]);
               //console.log("circle");
               currentOptions.push(circle);
             break;
@@ -173,30 +175,52 @@ function generateQuestion(){
 
         // Question about the background color
         if(typeOfQuestion == 0){
-          currentQuestion = "Select the " + colors[randomColorIndex] + " " + shapes[randomShapeIndex];
-          shapes.splice(randomShapeIndex,1);
+          currentQuestion = "Select the " + colors[randomColorHexIndex] + " " + shapes[randomShapeIndex];
+          //colorsHex.splice(randomColorIndex,1);
+          var colorHexRef = randomColorHexIndex;
+          var shapeRef = randomShapeIndex;
         }
         // Question about the word
         else{
           currentQuestion = "Select the " + shapes[randomShapeIndex] + " containing the word " + colors[randomColorIndex];
-          shapes.splice(randomShapeIndex,1);
+          //shapes.splice(randomShapeIndex,1);
+          var shapeRef = randomShapeIndex;
+          var wordRef = randomColorIndex;
         }
       }
       else{
+        if(typeOfQuestion==0){
+          do{
+            var randomShapeIndex= getRandomArbitrary(0, shapes.length);
+            var randomColorIndex = getRandomArbitrary(0, colors.length);
+            var randomColorHexIndex = getRandomArbitrary(0, colorsHex.length);
+            var randomPositionsIndex = getRandomArbitrary(0, positions.length);
+          } while(randomShapeIndex==shapeRef&&randomColorHexIndex==colorHexRef);
+        }
+        else{
+          do{
+            var randomShapeIndex= getRandomArbitrary(0, shapes.length);
+            var randomColorIndex = getRandomArbitrary(0, colors.length);
+            var randomColorHexIndex = getRandomArbitrary(0, colorsHex.length);
+            var randomPositionsIndex = getRandomArbitrary(0, positions.length);
+          } while(randomShapeIndex==shapeRef&&randomColorIndex==wordRef);
+        }
+
+
 
         switch(shapes[randomShapeIndex]){
           case "square":
-              var square = new Square(positions[randomPositionsIndex].x, positions[randomPositionsIndex].y, 100, -100, false, colorsHex[ randomColorHexIndex], colors[randomColorIndex]);
+              var square = new Square(positions[randomPositionsIndex].x, positions[randomPositionsIndex].y, 200, -200, false, colorsHex[ randomColorHexIndex], colors[randomColorIndex]);
             //  console.log("square");
               currentOptions.push(square);
             break;
           case "triangle":
-              var triangle = new Triangle(positions[randomPositionsIndex].x, positions[randomPositionsIndex].y, positions[randomPositionsIndex].x +100, positions[randomPositionsIndex].y, positions[randomPositionsIndex].x +50, positions[randomPositionsIndex].y-100, false, colorsHex[randomColorHexIndex], colors[randomColorIndex]);
+              var triangle = new Triangle(positions[randomPositionsIndex].x, positions[randomPositionsIndex].y, positions[randomPositionsIndex].x +200, positions[randomPositionsIndex].y, positions[randomPositionsIndex].x +100, positions[randomPositionsIndex].y-200, false, colorsHex[randomColorHexIndex], colors[randomColorIndex]);
               //console.log("triangle");
               currentOptions.push(triangle);
             break;
           case "circle":
-              var circle = new Circle(positions[randomPositionsIndex].x+50, positions[randomPositionsIndex].y-50, 50, false, colorsHex[randomColorHexIndex], colors[randomColorIndex]);
+              var circle = new Circle(positions[randomPositionsIndex].x+100, positions[randomPositionsIndex].y-100, 100, false, colorsHex[randomColorHexIndex], colors[randomColorIndex]);
             //  console.log("circle");
               currentOptions.push(circle);
             break;

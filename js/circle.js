@@ -7,6 +7,8 @@ class Circle{
     this.fillColor = fillColor;
     this.label = label;
     this.type="circle";
+    var textColor = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+    this.textRandomColor= textColor;
   }
 
   getX(){
@@ -35,7 +37,7 @@ class Circle{
     fill(this.fillColor);
     noStroke();
     ellipse(this.x,this.y,this.r, this.r);
-    fill("#000000");
+    fill(this.textRandomColor);
     text(this.label, this.x-20, this.y);
     return this; // allows method chaining
   }
