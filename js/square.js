@@ -42,7 +42,13 @@ class Square{
     noStroke();
     rect(this.x,this.y,this.width, this.height);
     fill(this.textRandomColor);
-    text(this.label, this.x + this.width/2-25, this.y+ this.height/2);
+    if(this.label == "yellow" || this.label == "purple"){
+      text(this.label, this.x + this.width/2-30, this.y+ this.height/2);
+    }
+    else{
+      text(this.label, this.x + this.width/2-25, this.y+ this.height/2);
+    }
+
     return this; // allows method chaining
   }
 }

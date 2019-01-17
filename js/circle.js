@@ -38,7 +38,12 @@ class Circle{
     noStroke();
     ellipse(this.x,this.y,this.r, this.r);
     fill(this.textRandomColor);
-    text(this.label, this.x-20, this.y);
+    if(this.label == "yellow" || this.label == "purple"){
+      text(this.label, this.x-35, this.y);
+    }
+    else{
+      text(this.label, this.x-20, this.y);
+    }
     return this; // allows method chaining
   }
 }

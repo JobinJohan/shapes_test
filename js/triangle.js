@@ -43,7 +43,16 @@ class Triangle{
     noStroke();
     triangle(this.x1, this.y1, this.x2, this.y2, this.x3, this.y3);
     fill(this.textRandomColor);
-    text(this.label, ((this.x1+this.x2)/2)-18, (this.y1+this.y3)/2);
+
+    if(this.label == "yellow" || this.label == "purple"){
+      text(this.label, ((this.x1+this.x2)/2)-30, (this.y1+this.y3)/2);
+    }
+    else{
+
+      text(this.label, ((this.x1+this.x2)/2)-18, (this.y1+this.y3)/2);
+
+    }
+
     return this; // allows method chaining
   }
 }

@@ -105,8 +105,6 @@ function mousePressed(){
     }
     else if(currentOptions[j].getType() == "square"){
       var rectangle = currentOptions[j];
-      console.log(rectangle);
-      console.log(isInsideRectangle(mouseX, mouseY, rectangle.getX(), rectangle.getY(), rectangle.getWidth(), rectangle.getHeight()));
       if(isInsideRectangle(mouseX, mouseY, rectangle.getX(), rectangle.getY(), rectangle.getWidth(), rectangle.getHeight()) && rectangle.getAnswer()){
         ++rightAnswer;
         timers.forEach(function(element){
@@ -240,7 +238,6 @@ function start(){
   }
   startTimer();
   generateQuestion();
-  console.log(currentOptions);
 
   started=true;
   loop();
